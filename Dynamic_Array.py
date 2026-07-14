@@ -10,6 +10,15 @@
 9. insert
 10. delete
 11. remove
+12. sort
+13. min
+14. max
+15. sum
+16. extend
+17. negative indexing
+18. Slicing
+19. Merge
+20. count
     """
 
 import ctypes
@@ -74,21 +83,42 @@ class MyList:
         self.size = 1
         return self.A
 
-    def find(self, itemvalue):
+    def __find__(self, itemvalue):
         for i in range(self.n):
-            if self.A == itemvalue:
+            if self.A[i] == itemvalue:
                 return i
-            else:
-                return "Element not found"
+        return "Element not found"
     
-    def __insert__(self,index, value):
-        if index <0 or index >= self.n:
-            raise IndexError('Index out of range')
-        self.__resize(self.size+1)
-        for i in range(self.n, index, -1):
+    def __insert__(self,pos, item):
+        if self.n == self.size:
+            self.__resize(self.size*2)
+
+        for i in range(self.n, pos, -1):
             self.A[i] = self.A[i-1]
-        self.A[index] = value
-        self.n += 1
+
+        self.A[pos] = item
+        self.n = self.n + 1
+
+    def __remove__(self, item):
+        pos = self.__find__(item)
+
+        if type(pos) == int:
+            #delete
+            self.__delitem__(pos)
+        else:
+            return pos
+
+
+    def __delitem__(self, pos):
+        #check if index is valid
+        for i in range (pos, self.n-1):
+            self.A[i] = self.A[i+1]
+        self.n -= 1
+        if self.n > 0 and self.n == self.size//4:
+            self.__resize(self.size//2)
+
+
+
 
 # testing purpose
 m = MyList()
@@ -98,9 +128,11 @@ m.__append__(30)
 m.__append__(40)
 m.__append__(50)
 m.__append__("hello")
-m.__pop__()
+print(m.__find__(50))
+m.__remove__("hello")
 print(m)
 print(len(m))
+
 
 
 
