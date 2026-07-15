@@ -57,6 +57,24 @@ class Linked_list:
         self.n = self.n + 1
         return
 
+    def __insertMiddle__(self, after, value):
+        new_node = Node(value)
+        curr = self.head
+        while curr != None:
+            if curr.data == after: 
+                break
+            curr = curr.next
+
+        # case 1 break -> Item mil gaya -> curr -> not none
+        if curr != None:
+            new_node.next = curr.next
+            curr.next = new_node
+            self.n += 1
+            return
+        # case 2 break -> item nahi mila -> curr -> None
+        else:
+            print("Item not found")
+
     def __traversal__(self):
         curr = self.head
         while curr != None:
@@ -70,4 +88,7 @@ l.__insertHead__(3)
 l.__insertHead__(4)
 
 l.__insertTail__(6)
+l.__insertTail__(11)
+l.__insertMiddle__(11, 20)
+l.__insertMiddle__(2, 8)
 l.__traversal__()
