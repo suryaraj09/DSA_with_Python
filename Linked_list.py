@@ -74,6 +74,7 @@ class Linked_list:
         # case 2 break -> item nahi mila -> curr -> None
         else:
             print("Item not found")
+        return
 
     def __traversal__(self):
         curr = self.head
