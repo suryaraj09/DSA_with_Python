@@ -18,14 +18,6 @@ c = Node(3)
 a.next = b
 b.next = c
 
-print(a.data)
-print(a.next)
-
-print(b.data)
-print(b.next)
-
-print(c.data)
-print(c.next)
 
 class Linked_list:
 
@@ -82,14 +74,26 @@ class Linked_list:
             print(curr.data)
             curr = curr.next
 
+    def __clear__(self):
+        self.head = None
+        self.n = 0
+        return True
+
+    def __headDelete__(self):
+        self.head = self.head.next
+        return
+
+
 l = Linked_list()
 l.__insertHead__(1)
 l.__insertHead__(2)
 l.__insertHead__(3)
 l.__insertHead__(4)
 
-l.__insertTail__(6)
-l.__insertTail__(11)
-l.__insertMiddle__(11, 20)
-l.__insertMiddle__(2, 8)
+# l.__insertTail__(6)
+# l.__insertTail__(11)
+# l.__insertMiddle__(11, 20)
+# l.__insertMiddle__(2, 8)
+l.__headDelete__()
+l.__headDelete__()
 l.__traversal__()
