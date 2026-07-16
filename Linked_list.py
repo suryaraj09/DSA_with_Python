@@ -80,9 +80,54 @@ class Linked_list:
         return True
 
     def __headDelete__(self):
+        if self.head == None:
+            print("empty list")
+            return False
         self.head = self.head.next
-        return
+        self.n -= 1
+        return True
 
+    def __POP__(self):
+        if self.head == None:
+            print("empty linked list")
+            return None
+
+        curr = self.head
+        # have to check for the one item in the LL
+        if curr.next == None:
+            val = curr.data
+            self.__headDelete__()
+            return val
+        while curr.next.next != None:
+            curr = curr.next
+        popped_val = curr.next.data
+        curr.next = None
+        self.n -= 1
+        return popped_val
+
+    def __remove__(self, value):
+        # Case 1: Empty list check
+        if self.head == None:
+            print("Empty list")
+            return
+
+        # Case 2: Item to remove is at the head
+        if self.head.data == value:
+            self.head = self.head.next
+            self.n -= 1
+            return
+
+        # Case 3: Item to remove is in the middle or tail
+        curr = self.head
+        while curr.next != None:
+            if curr.next.data == value:
+                curr.next = curr.next.next
+                self.n -= 1
+                return
+            curr = curr.next
+
+        # Case 4: Item not found
+        print("Item Not Found")
 
 l = Linked_list()
 l.__insertHead__(1)
@@ -94,6 +139,9 @@ l.__insertHead__(4)
 # l.__insertTail__(11)
 # l.__insertMiddle__(11, 20)
 # l.__insertMiddle__(2, 8)
-l.__headDelete__()
-l.__headDelete__()
+l.__POP__()
+l.__POP__()
+l.__POP__()
+l.__POP__()
+l.__POP__()
 l.__traversal__()
