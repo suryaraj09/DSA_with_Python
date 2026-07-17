@@ -105,6 +105,34 @@ class Linked_list:
         self.n -= 1
         return popped_val
 
+# searching the index by the value
+    def __find__(self, item):
+        curr  = self.head
+        pos = 0
+
+        while curr != None:
+            if curr.data  == item:
+                return pos
+            curr = curr.next
+            pos = pos + 1
+        return "position not found"
+
+#seaching the value from the index
+
+    def getitem(self, index):
+        curr = self.head
+        pos = 0
+
+        while curr != None:
+            if pos == index:
+                return curr.data
+            curr = curr.next
+            pos = pos + 1
+        return "the postional value not found"
+
+        return curr.data
+
+
     def __remove__(self, value):
         # Case 1: Empty list check
         if self.head == None:
@@ -139,9 +167,18 @@ l.__insertHead__(4)
 # l.__insertTail__(11)
 # l.__insertMiddle__(11, 20)
 # l.__insertMiddle__(2, 8)
-l.__POP__()
-l.__POP__()
-l.__POP__()
-l.__POP__()
-l.__POP__()
+# l.__POP__()
+# l.__POP__()
+# l.__POP__()
+# l.__POP__()
+# l.__POP__()
+# l.__remove__(2)
+# l.__remove__(4)
+# l.__remove__(3)
+# l.__remove__(1)
+
+# print("The search of the index resulted\n")
+# print(l.__find__(10))
+print("\nThe traversal of the Linked list\n")
+print(l.getitem(3))
 l.__traversal__()
