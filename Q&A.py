@@ -16,7 +16,7 @@ n1 = Node(1)
 n2 = Node(2)
 n3 = Node(3)
 n4 = Node(4)
-n5 = Node(5)
+n5 = Node(5) 
 
 # 3. Link them together
 n1.next = n2
