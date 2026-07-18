@@ -182,3 +182,4 @@ l.__insertHead__(4)
 print("\nThe traversal of the Linked list\n")
 print(l.getitem(3))
 l.__traversal__()
+ 
