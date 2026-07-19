@@ -26,3 +26,5 @@ n4.next = n5
 
 # 4. Call the function passing the head node (n1)
 fun(n1)
+
+
